@@ -133,6 +133,8 @@ void            release(struct spinlock*);
 void            pushcli(void);
 void            popcli(void);
 
+extern struct spinlock readcountlock;
+
 // sleeplock.c
 void            acquiresleep(struct sleeplock*);
 void            releasesleep(struct sleeplock*);

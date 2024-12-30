@@ -69,6 +69,10 @@ sys_dup(void)
 int
 sys_read(void)
 {
+  extern int readcount;     // Declaring external variable readcount
+  acquire(&readcountlock);  // Arquiring the lock
+  readcount++;              // The readcount increases by one
+  release(&readcountlock);  // Releasing the lock
   struct file *f;
   int n;
   char *p;

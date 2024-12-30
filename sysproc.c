@@ -89,3 +89,14 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_getreadcount(void) {
+  extern int readcount; // global readcount
+  int count;    // varaible for count
+  acquire(&readcountlock);  // acquiring the lock
+  count = readcount;        // saving value of readcount to count
+  release(&readcountlock);  // releasing the lock 
+
+  return count; // returning the count
+}
